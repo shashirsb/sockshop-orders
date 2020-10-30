@@ -255,10 +255,10 @@ public class AtpSodaOrderRepository implements OrderRepository {
             try {
 
                 System.out.println("Customer name isssssss" + customerId);
-               OracleDocument filterSpec = this.db.createDocumentFromString("{\"_id\": \" "+customerId+" \"}");
+               OracleDocument filterSpec = this.db.createDocumentFromString("{\"_id\" : { \"$eq\" : \""+customerId+"\" }");
 
                c = col.find().filter(filterSpec).getCursor();
-        
+               
 
                 OracleDocument resultDoc;
                 while (c.hasNext()) {
