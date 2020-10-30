@@ -489,7 +489,18 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
 
             //String _document = objmain.toString();
-            String _document = "{\"date\":{\"date\":\"2020-10-30T17:33:42\"},\"total\":12,\"address\":{\"country\":\"USA\",\"number\":\"123\",\"city\":\"Denver\",\"street\":\"Mountain St\",\"postcode\":\"74765\"},\"shipment\":{\"carrier\":\"FEDEX\",\"deliveryDate\":{\"deliveryDate\":\"2020-10-31\"},\"trackingNumber\":\"231300687629630\"},\"orderId\":\"29ad0efe\",\"links\":{\"self\":{\"href\":\"http://orders/orders/29ad0efe\"}},\"payment\":{\"authorised\":true,\"message\":\"Payment authorized.\"},\"items\":[{\"unitPrice\":12,\"itemId\":\"zzz4f044-b040-410d-8ead-4de0446aec7e\",\"quantity\":1}],\"card\":{\"expires\":\"08/23\",\"longNum\":\"************7865\",\"ccv\":\"042\"},\"status\":\"SHIPPED\",\"customer\":{\"firstName\":\"Randy\",\"lastName\":\"Stafford\",\"_id\":\"randy\",\"email\":\"randy@weavesocks.com\"}}";
+            String _document = "{\"date\":{\"date\":\""+objdate.toString()+"\"},
+            \"total\":"+order.total+",
+            \"address\": "+objaddress.toString()+" ,
+            \"shipment\":"+objshipment.toString()+",
+            \"orderId\":\""+order.orderId.toString()+"\",
+            \"links\":{\"self\":{\"href\":\"http://orders/orders/"+order.orderId.toString()+"\"}},
+            \"payment\":"+objpayment.toString()+",
+            \"items\"::"+arrayitems.toString()+",
+            \"card\":"+objcard.toString()+",
+            \"status\":\""+order.status.toString()+"\",
+            \"customer\":"+objcustomer.toString()+"";
+            
             System.out.println(_document);
     
             // Create a JSON document.
