@@ -139,7 +139,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
                     
                     //orders.customer = jsonObject.get("customer").toString(); // Convert to Customer
-                    Object obj = parser.parse(jsonObject.get("customer").toString());
+                    obj = parser.parse(jsonObject.get("customer").toString());
                     JSONObject _customer = (JSONObject) obj;
                     orders.customer =  Customer.builder()
                                         .id(_customer.id)
