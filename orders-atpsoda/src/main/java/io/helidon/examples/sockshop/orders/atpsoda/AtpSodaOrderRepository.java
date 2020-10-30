@@ -270,15 +270,15 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     //Customer(String id, String firstName, String lastName, String email 
                     obj = parser.parse(jsonObject.get("customer").toString());
                     JSONObject _customer = (JSONObject) obj;
-                    order.customer = new Customer(_customer._id.toString(),_customer.email.toString(),_customer.firstName.toString(),_customer.lastName.toString());
+                    order.customer = new Customer(_customer.get("_id").toString(),_customer.get("email").toString(),_customer.get("firstName").toString(),_customer.get("lastName").toString());
                     //String number, String street, String city, String postcode, String country
                     obj = parser.parse(jsonObject.get("address").toString());
                     JSONObject _address = (JSONObject) obj;
-                    order.address = new Adress(_address.number.toString(),_address.street.toString(),_address.city.toString(),_address.postcode.toString(),_address.country.toString());
+                    order.address = new Adress(_address.get("number").toString(),_address.get("street").toString(),_address.get("city").toString(),_address.get("postcode").toString(),_address.get("country").toString());
                     //String longNum, String expires, String ccv
                     obj = parser.parse(jsonObject.get("card").toString());
                     JSONObject _card = (JSONObject) obj;
-                    order.card = new Card(_card.longNum.toString(),_card.expires.toString(),_card.ccv.toString());
+                    order.card = new Card(_card.get("longNum").toString(),_card.get("expires").toString(),_card.get("ccv").toString());
                     
                      //orders.items = jsonObject.get("items").toString();       // Convert to Collection<Item>
                      JSONArray _itemsArray = jsonObject.getJSONArray("items");            
