@@ -216,6 +216,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
         }
 
         System.out.println("Shipment getShipment.. GET Request 200OK");
+        System.out.println(orders.toString());
         return orders;
 
     }
@@ -323,7 +324,9 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
 
                    // orders.links = new Links().order(orderId);        // Convert to Link
-results.add(orders);
+                  
+                    results.add(orders);
+                    System.out.println(results.toString());
                                     }
             
                 
@@ -431,6 +434,7 @@ results.add(orders);
                 this.db.createDocumentFromString(_document);
 
             // Insert the document into a collection.
+            System.out.println(doc.toString());
             col.insert(doc);
             System.out.println("saveOrder .... 200OK");
         } catch (OracleException e) {
