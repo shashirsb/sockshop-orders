@@ -36,19 +36,19 @@ public class Item implements Serializable {
      */
     @Id
     @Schema(description = "The item identifier")
-    private String itemId;
+    public String itemId;
 
     /**
      * The item quantity.
      */
     @Schema(description = "The item quantity")
-    private int quantity;
+    public int quantity;
 
     /**
      * The item's price per unit.
      */
     @Schema(description = "The item's price per unit")
-    private float unitPrice;
+    public float unitPrice;
 
     /**
      * The order this item belongs to, for JPA optimization.
@@ -59,7 +59,7 @@ public class Item implements Serializable {
     @EqualsAndHashCode.Exclude
     @JsonbTransient
     @BsonIgnore
-    private Order order;
+    public Order order;
 
     @Builder
     Item(String itemId, int quantity, float unitPrice) {

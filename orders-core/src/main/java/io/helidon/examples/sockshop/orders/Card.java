@@ -27,19 +27,19 @@ public class Card implements Serializable {
      * Credit card number.
      */
     @Schema(description = "Credit card number")
-    private String longNum;
+    public String longNum;
 
     /**
      * Expiration date.
      */
     @Schema(description = "Expiration date")
-    private String expires;
+    public String expires;
 
     /**
      * CCV code.
      */
     @Schema(description = "CCV code")
-    private String ccv;
+    public String ccv;
 
     @Builder
     Card(String longNum, String expires, String ccv) {

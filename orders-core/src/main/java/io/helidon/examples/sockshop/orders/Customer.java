@@ -31,25 +31,25 @@ public class Customer implements Serializable {
      */
     @JsonbProperty("username")
     @Schema(description = "Customer identifier")
-    private String id;
+    public String id;
 
     /**
      * First name.
      */
     @Schema(description = "First name")
-    private String firstName;
+    public String firstName;
 
     /**
      * Last name.
      */
     @Schema(description = "Last name")
-    private String lastName;
+    public String lastName;
 
     /**
      * Customer's email.
      */
     @Schema(description = "Customer's email")
-    private String email;
+    public String email;
 
     @Builder
     Customer(String id, String firstName, String lastName, String email) {

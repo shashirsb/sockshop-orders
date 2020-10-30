@@ -27,31 +27,31 @@ public class Address implements Serializable {
      * Street number.
      */
     @Schema(description = "Street number")
-    private String number;
+    public String number;
 
     /**
      * Street name.
      */
     @Schema(description = "Street name")
-    private String street;
+    public String street;
 
     /**
      * City name.
      */
     @Schema(description = "City name")
-    private String city;
+    public String city;
 
     /**
      * Postal code.
      */
     @Schema(description = "Postal code")
-    private String postcode;
+    public String postcode;
 
     /**
      * Country name.
      */
     @Schema(description = "County name")
-    private String country;
+    public String country;
 
     @Builder
     Address(String number, String street, String city, String postcode, String country) {

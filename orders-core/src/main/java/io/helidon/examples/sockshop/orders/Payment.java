@@ -27,13 +27,13 @@ public class Payment implements Serializable {
      * Flag specifying whether the payment was authorized.
      */
     @Schema(description = "Flag specifying whether the payment was authorized")
-    private boolean authorised;
+    public boolean authorised;
 
     /**
      * Approval or rejection message.
      */
     @Schema(description = "Approval or rejection message")
-    private String  message;
+    public String  message;
 
     @Builder
     Payment(boolean authorised, String message) {

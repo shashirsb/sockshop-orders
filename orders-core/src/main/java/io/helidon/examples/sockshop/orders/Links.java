@@ -18,7 +18,7 @@ import lombok.Data;
  * {@link io.helidon.examples.sockshop.orders.Order}.
  */
 public class Links extends LinkedHashMap<String, Links.Link> implements Serializable {
-    private static Map<String, String> ENTITY_MAP = Map.of("order", "orders");
+    public static Map<String, String> ENTITY_MAP = Map.of("order", "orders");
 
     /**
      * Add link to the specified entity.
@@ -28,8 +28,8 @@ public class Links extends LinkedHashMap<String, Links.Link> implements Serializ
      *
      * @return this {@code Links} structure
      */
-    private Links addLink(String entity, String id) {
-        Link link = Link.to(ENTITY_MAP.get(entity), id);
+    public Links addLink(String entity, String id) {
+        publicLink link = Link.to(ENTITY_MAP.get(entity), id);
         put("self", link);
         return this;
     }
@@ -54,7 +54,7 @@ public class Links extends LinkedHashMap<String, Links.Link> implements Serializ
         /**
          * Link's {@code href} value.
          */
-        private String href;
+        public String href;
 
         /**
          * Construct {@code Link} instance.
