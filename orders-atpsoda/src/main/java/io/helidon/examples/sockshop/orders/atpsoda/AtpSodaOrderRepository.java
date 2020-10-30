@@ -250,7 +250,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
                 OracleDocument resultDoc;
                 while (c.hasNext()) {
-
+                    Order orders = new Order();
                     // String orderId, String carrier, String trackingNumber, LocalDate deliveryDate
                     resultDoc = c.next();
                     JSONParser parser = new JSONParser();
