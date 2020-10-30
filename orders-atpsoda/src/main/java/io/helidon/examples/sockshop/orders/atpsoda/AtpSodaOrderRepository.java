@@ -292,8 +292,9 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
                    order.date = aLDT;
                    order.orderId = jsonObject.get("orderId").toString();
-                   order.status = jsonObject.get("status").toString();
-   
+
+                   Order.Status status = Order.Status.valueOf(jsonObject.get("status").toString());
+                   orders.status =  status;   
 
                     results.add(order);
                 }
