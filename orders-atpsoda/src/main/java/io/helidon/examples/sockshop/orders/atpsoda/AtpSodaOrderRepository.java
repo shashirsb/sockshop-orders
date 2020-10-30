@@ -169,9 +169,14 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     JSONArray _itemsArray = (JSONArray)jsonObject.get("items");            
                     List<Item> items = new ArrayList<>();
 
+                    // Iterator<String> it = _itemsArray.iterator();
+                    // while (it.hasNext()) {
+                    //     System.out.println("City = " + it.next());
+                    // }
+                    
                     for(Object o: _itemsArray){
                         if ( o instanceof JSONObject ) {
-                            JSONObject _itemsObject = parse((JSONObject)o);
+                            JSONObject _itemsObject = (JSONObject) o;
                             items.add(Item.builder().itemId(_itemsObject.get("itemId").toString()).quantity(Integer.valueOf(_itemsObject.get("quantity"))).unitPrice(Float.parseFloat(_itemsObject.get("unitPrice"))).build());
                         }
                     }
