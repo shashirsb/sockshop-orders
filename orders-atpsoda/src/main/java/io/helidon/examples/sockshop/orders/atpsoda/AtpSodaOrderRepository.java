@@ -445,15 +445,14 @@ public class AtpSodaOrderRepository implements OrderRepository {
             System.out.println(_document);
     
             // Create a JSON document.
-            OracleDocument doc =
-                this.db.createDocumentFromString(_document);
+            OracleDocument doc = this.db.createDocumentFromString(_document);
 
             // Insert the document into a collection.
             System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
             System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
             System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
             System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-            System.out.println(doc.toString());
+            System.out.println(doc.getContentAsString());
             System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
             System.out.println(_document);
             System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
