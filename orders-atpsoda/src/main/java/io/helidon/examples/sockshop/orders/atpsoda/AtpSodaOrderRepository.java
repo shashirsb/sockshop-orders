@@ -369,7 +369,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
             objshipment.put("trackingNumber", order.shipment.trackingNumber.toString());
 
             JSONArray arrayitems = new JSONArray();
-            Collection<Item> items = order.shipment;
+            Collection<Item> items = order.items;
                 for (Item item : items) {
                     JSONObject objitems= new JSONObject();
                     objitems.put("itemId", item.itemId.toString());
