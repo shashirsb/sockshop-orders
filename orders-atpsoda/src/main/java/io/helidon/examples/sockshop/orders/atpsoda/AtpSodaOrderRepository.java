@@ -321,7 +321,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
         
         try {
 
-            // OracleCollection col = this.db.admin().createCollection("orders");
+            OracleCollection col = this.db.admin().createCollection("orders");
            
 
             // JSONObject objaddress = new JSONObject();
