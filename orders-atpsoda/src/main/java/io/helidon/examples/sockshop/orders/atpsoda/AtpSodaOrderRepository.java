@@ -245,7 +245,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
             String jsonFormattedString = null;
             try {
 
-                OracleDocument filterSpec = this.db.createDocumentFromString("{ \"customerId\" : \"" + customerId + "\"}");
+                OracleDocument filterSpec = this.db.createDocumentFromString("{ \"_id\" : \"" + customerId + "\"}");
 
                 c = col.find().filter(filterSpec).getCursor();
 
