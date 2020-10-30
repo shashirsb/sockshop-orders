@@ -203,7 +203,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     orders.status =  status;    
 
 
-                    orders.links = new Links().order(orderId);        // Convert to Link
+                   // orders.links = new Links().order(orderId);        // Convert to Link
 
                                     }
             } finally {
