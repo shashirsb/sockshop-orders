@@ -202,7 +202,8 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     Order.Status status = Order.Status.valueOf(jsonObject.get("status").toString());
                     orders.status =  status;    
 
-                    orders.links = Links.order(orderId);        // Convert to Link
+
+                    orders.links = new Links().order(orderId);        // Convert to Link
 
                                     }
             } finally {
