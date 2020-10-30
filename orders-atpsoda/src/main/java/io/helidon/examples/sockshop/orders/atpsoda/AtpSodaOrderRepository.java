@@ -268,11 +268,17 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
 
                     //Customer(String id, String firstName, String lastName, String email 
-                    order.customer = new Customer(jsonObject.get("customer")._id.toString(),jsonObject.get("customer").email.toString(),jsonObject.get("customer").firstName.toString(),jsonObject.get("customer").lastName.toString());
+                    obj = parser.parse(jsonObject.get("customer").toString());
+                    JSONObject _customer = (JSONObject) obj;
+                    order.customer = new Customer(_customer._id.toString(),_customer.email.toString(),_customer.firstName.toString(),_customer.lastName.toString());
                     //String number, String street, String city, String postcode, String country
-                    order.address = new Adress(jsonObject.get("address").number.toString(),jsonObject.get("address").street.toString(),jsonObject.get("address").city.toString(),jsonObject.get("address").postcode.toString(),jsonObject.get("address").country.toString());
+                    obj = parser.parse(jsonObject.get("address").toString());
+                    JSONObject _address = (JSONObject) obj;
+                    order.address = new Adress(_address.number.toString(),_address.street.toString(),_address.city.toString(),_address.postcode.toString(),_address.country.toString());
                     //String longNum, String expires, String ccv
-                    order.card = new Card(jsonObject.get("card").longNum.toString(),jsonObject.get("card").expires.toString(),jsonObject.get("card").ccv.toString());
+                    obj = parser.parse(jsonObject.get("card").toString());
+                    JSONObject _card = (JSONObject) obj;
+                    order.card = new Card(_card.longNum.toString(),_card.expires.toString(),_card.ccv.toString());
                     
                      //orders.items = jsonObject.get("items").toString();       // Convert to Collection<Item>
                      JSONArray _itemsArray = jsonObject.getJSONArray("items");            
