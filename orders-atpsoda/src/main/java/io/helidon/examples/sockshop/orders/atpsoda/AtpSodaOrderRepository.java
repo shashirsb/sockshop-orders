@@ -153,7 +153,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
                    obj = parser.parse(jsonObject.get("card").toString());
                    JSONObject _card = (JSONObject) obj;
-                    orders.card =  Card.builder().longNum(_card.get("longNum").toString()).expires(_cardget.("expires").toString()).ccv(_card.get("ccv").toString()).build();
+                    orders.card =  Card.builder().longNum(_card.get("longNum").toString()).expires(_cardget.get("expires").toString()).ccv(_card.get("ccv").toString()).build();
 
                     orders.orderId = jsonObject.get("orderId").toString();
 
