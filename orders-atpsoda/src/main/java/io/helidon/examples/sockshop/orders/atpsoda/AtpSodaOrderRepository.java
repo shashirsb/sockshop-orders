@@ -244,59 +244,59 @@ public class AtpSodaOrderRepository implements OrderRepository {
             String jsonFormattedString = null;
             try {
 
-                // OracleDocument filterSpec = this.db.createDocumentFromString("{ \"customerId\" : \"" + customerId + "\"}");
+                OracleDocument filterSpec = this.db.createDocumentFromString("{ \"customerId\" : \"" + customerId + "\"}");
 
-                // c = col.find().filter(filterSpec).getCursor();
+                c = col.find().filter(filterSpec).getCursor();
 
-                // OracleDocument resultDoc;
-                // while (c.hasNext()) {
-                //     Order order = new Order();
-                //     resultDoc = c.next();
+                OracleDocument resultDoc;
+                while (c.hasNext()) {
+                    Order order = new Order();
+                    resultDoc = c.next();
 
-                //     JSONParser parser = new JSONParser();
-                //     Object obj = parser.parse(resultDoc.getContentAsString());
-                //     JSONObject jsonObject = (JSONObject) obj;
+                    JSONParser parser = new JSONParser();
+                    Object obj = parser.parse(resultDoc.getContentAsString());
+                    JSONObject jsonObject = (JSONObject) obj;
 
 
-                //     //Customer(String id, String firstName, String lastName, String email 
-                //     obj = parser.parse(jsonObject.get("customer").toString());
-                //     JSONObject _customer = (JSONObject) obj;
-                //     order.customer = Customer.builder().id(_customer.get("_id").toString()).firstName(_customer.get("firstName").toString()).lastName(_customer.get("lastName").toString()).email(_customer.get("email").toString()).build();
+                    //Customer(String id, String firstName, String lastName, String email 
+                    obj = parser.parse(jsonObject.get("customer").toString());
+                    JSONObject _customer = (JSONObject) obj;
+                    order.customer = Customer.builder().id(_customer.get("_id").toString()).firstName(_customer.get("firstName").toString()).lastName(_customer.get("lastName").toString()).email(_customer.get("email").toString()).build();
 
             
-                //   //String number, String street, String city, String postcode, String country
-                //     obj = parser.parse(jsonObject.get("address").toString());
-                //     JSONObject _address = (JSONObject) obj;
-                //     order.address = Adress(_address.get("number").toString(),_address.get("street").toString(),_address.get("city").toString(),_address.get("postcode").toString(),_address.get("country").toString());
-                //     //String longNum, String expires, String ccv
-                //     obj = parser.parse(jsonObject.get("card").toString());
-                //     JSONObject _card = (JSONObject) obj;
-                //     order.card = Card(_card.get("longNum").toString(),_card.get("expires").toString(),_card.get("ccv").toString());
+                  //String number, String street, String city, String postcode, String country
+                    obj = parser.parse(jsonObject.get("address").toString());
+                    JSONObject _address = (JSONObject) obj;
+                    order.address = Adress(_address.get("number").toString(),_address.get("street").toString(),_address.get("city").toString(),_address.get("postcode").toString(),_address.get("country").toString());
+                    //String longNum, String expires, String ccv
+                    obj = parser.parse(jsonObject.get("card").toString());
+                    JSONObject _card = (JSONObject) obj;
+                    order.card = Card(_card.get("longNum").toString(),_card.get("expires").toString(),_card.get("ccv").toString());
                     
-                //      //orders.items = jsonObject.get("items").toString();       // Convert to Collection<Item>
-                //      JSONArray _itemsArray = jsonObject.getJSONArray("items");            
-                //      List<Item> items = new ArrayList<>();
+                     //orders.items = jsonObject.get("items").toString();       // Convert to Collection<Item>
+                     JSONArray _itemsArray = jsonObject.getJSONArray("items");            
+                     List<Item> items = new ArrayList<>();
  
-                //      for(Object o: _itemsArray){
-                //          if ( o instanceof JSONObject ) {
-                //              items.add(new Item(o.itemId.toString(i),Integer.valueOf(o.quantity), Integer.valueOf(o.unitPrice).floatValue()));
-                //          }
-                //      }
-                //      orders.items = items;                
+                     for(Object o: _itemsArray){
+                         if ( o instanceof JSONObject ) {
+                             items.add(new Item(o.itemId.toString(i),Integer.valueOf(o.quantity), Integer.valueOf(o.unitPrice).floatValue()));
+                         }
+                     }
+                     orders.items = items;                
 
-                //    // String str = "2020-10-29T14:17:02.216+00:00"; 
-                //    String strDatewithTime = jsonObject.get("time").toString();
-                //    LocalDateTime aLDT = LocalDateTime.parse(strDatewithTime);
+                   // String str = "2020-10-29T14:17:02.216+00:00"; 
+                   String strDatewithTime = jsonObject.get("time").toString();
+                   LocalDateTime aLDT = LocalDateTime.parse(strDatewithTime);
 
 
-                //    order.date = aLDT;
-                //    order.orderId = jsonObject.get("orderId").toString();
+                   order.date = aLDT;
+                   order.orderId = jsonObject.get("orderId").toString();
 
-                //    Order.Status status = Order.Status.valueOf(jsonObject.get("status").toString());
-                //    orders.status =  status;   
+                   Order.Status status = Order.Status.valueOf(jsonObject.get("status").toString());
+                   orders.status =  status;   
 
-                //     results.add(order);
-                // }
+                    results.add(order);
+                }
                 
 
 
