@@ -255,7 +255,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
             try {
 
                 System.out.println("Customer name isssssss" + customerId);
-               OracleDocument filterSpec = this.db.createDocumentFromString("{ \"username\" : \"" + customerId + "\"}");
+               OracleDocument filterSpec = this.db.createDocumentFromString("\"customer\": {\"_id\": \" "+customerId+" \"}");
 
                c = col.find().filter(filterSpec).getCursor();
         
