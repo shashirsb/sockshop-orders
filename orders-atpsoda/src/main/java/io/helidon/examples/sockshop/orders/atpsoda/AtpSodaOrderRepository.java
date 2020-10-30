@@ -284,8 +284,8 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
 
                    order.date = aLDT;
-                   order.orderId = jsonObject.get("orderId").toString());
-                   order.status = jsonObject.get("status").toString());
+                   order.orderId = jsonObject.get("orderId").toString();
+                   order.status = jsonObject.get("status").toString();
    
 
                     results.add(order);
@@ -345,7 +345,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
             objhref.put("href", "http://orders/orders/"+ order.orderId.toString());
 
             JSONObject objlinks = new JSONObject();
-            objlinks.put("self", objhref.toString();
+            objlinks.put("self", objhref.toString());
 
             JSONObject objpayment = new JSONObject();
             objpayment.put("authorised", order.payment.authorised.toString());
