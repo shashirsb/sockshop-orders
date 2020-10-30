@@ -326,7 +326,15 @@ public class AtpSodaOrderRepository implements OrderRepository {
                    // orders.links = new Links().order(orderId);        // Convert to Link
                   
                     results.add(orders);
-                    System.out.println(results.toString());
+                    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                    System.out.println("Orders String :" + orders.toString());
+                    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                    System.out.println("Resutls String  results.add(orders):"results.toString());
+                    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");                    
+                    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
                                     }
             
                 
@@ -350,7 +358,13 @@ public class AtpSodaOrderRepository implements OrderRepository {
     @Override
     public void saveOrder(Order order) {
         //orders.insertOne(order);
-
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        System.out.println(order.toString());
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         
         try {
 
@@ -434,7 +448,16 @@ public class AtpSodaOrderRepository implements OrderRepository {
                 this.db.createDocumentFromString(_document);
 
             // Insert the document into a collection.
+            System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+            System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+            System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+            System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
             System.out.println(doc.toString());
+            System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+            System.out.println(_document);
+            System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+            System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        
             col.insert(doc);
             System.out.println("saveOrder .... 200OK");
         } catch (OracleException e) {
