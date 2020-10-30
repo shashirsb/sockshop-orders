@@ -40,9 +40,9 @@ import org.bson.conversions.Bson;
 import org.eclipse.microprofile.opentracing.Traced;
 
 
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonArray;
+// import javax.json.Json;
+// import javax.json.JsonObject;
+// import javax.json.JsonArray;
 
 import java.nio.file.*;
 import java.nio.charset.StandardCharsets;
