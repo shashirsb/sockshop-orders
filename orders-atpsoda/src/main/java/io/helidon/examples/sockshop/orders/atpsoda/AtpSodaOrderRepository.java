@@ -153,7 +153,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
                    obj = parser.parse(jsonObject.get("card").toString());
                    JSONObject _card = (JSONObject) obj;
-                    orders.card =  Card.builder().longNum(_card.get("longNum").toString()).expires(_card.get("expires").toString()).ccv(_card.get("ccv").toString()).build();
+                    orders.card =  Card.builder().longNum(_card.get("longNum").toString()).expires(_cardget.("expires").toString()).ccv(_card.get("ccv").toString()).build();
 
                     orders.orderId = jsonObject.get("orderId").toString();
 
@@ -179,12 +179,12 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     //orders.payment = jsonObject.get("payment").toString();   // Convert to Payment
                     obj = parser.parse(jsonObject.get("payment").toString());
                    JSONObject _payment = (JSONObject) obj;
-                    orders.payment =   Payment.builder().authorised(Boolean.parseBoolean(_payment.("authorised").toString())).message(_payment.("message").toString()).build();
+                    orders.payment =   Payment.builder().authorised(Boolean.parseBoolean(_payment.get("authorised").toString())).message(_payment.get("message").toString()).build();
 
                     //orders.shipment = jsonObject.get("shipment").toString(); //Convert to Shipment
                     obj = parser.parse(jsonObject.get("shipment").toString());
                    JSONObject _shipment = (JSONObject) obj;
-                    orders.shipment =   Shipment.builder().carrier(_shipment.("carrier").toString()).trackingNumber(_shipment.("trackingNumber").toString()).deliveryDate( LocalDate.parse(_shipment.("deliveryDate").toString())).build();
+                    orders.shipment =   Shipment.builder().carrier(_shipment.get("carrier").toString()).trackingNumber(_shipment.get("trackingNumber").toString()).deliveryDate( LocalDate.parse(_shipment.get("deliveryDate").toString())).build();
 
                                    
                     Order.Status status = Order.Status.valueOf(jsonObject.get("status").toString());
