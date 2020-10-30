@@ -381,7 +381,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
             JSONObject objmain = new JSONObject();
             objmain.put("orderId", order.orderId.toString());
             objmain.put("status", order.status.toString());
-            objmain.put("total", Float.parseFloat(order.total));
+            objmain.put("total", order.total.toString());
             objmain.put("address", objaddress.toString());
             objmain.put("card", objcard.toString());
             objmain.put("customer", objcustomer.toString());
