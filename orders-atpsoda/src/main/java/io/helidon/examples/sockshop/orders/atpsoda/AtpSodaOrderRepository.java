@@ -440,10 +440,10 @@ public class AtpSodaOrderRepository implements OrderRepository {
             objcustomer.put("lastName", order.customer.lastName.toString());
 
             JSONObject obj$date = new JSONObject();
-            obj$date.put("$date", order.date.toString());
+            obj$date.put("date", order.date.toString());
 
             JSONObject objdate = new JSONObject();
-            objdate.put("$date", obj$date.toString());
+            objdate.put("date", obj$date.toString());
 
             JSONObject objhref = new JSONObject();
             objhref.put("href", "http://orders/orders/"+ order.orderId.toString());
@@ -460,7 +460,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
             JSONObject objshipment = new JSONObject();
             objshipment.put("carrier", order.shipment.carrier.toString());
-            objshipment.put("deliveryDate", objdeliveryDate.toString());
+            objshipment.put("deliveryDate", objdeliveryDate);
             objshipment.put("trackingNumber", order.shipment.trackingNumber.toString());
 
             JSONArray arrayitems = new JSONArray();
@@ -474,24 +474,25 @@ public class AtpSodaOrderRepository implements OrderRepository {
                 }
 
   
-            JSONObject objmain = new JSONObject();
-            objmain.put("orderId", order.orderId.toString());
-            objmain.put("status", order.status.toString());
-            objmain.put("total", order.total);
-            objmain.put("address", objaddress.toString());
-            objmain.put("card", objcard.toString());
-            objmain.put("customer", objcustomer.toString());
-            objmain.put("date", objdate.toString());
-            objmain.put("items", arrayitems.toString());
-            objmain.put("links", objlinks.toString());
-            objmain.put("payment", objpayment.toString());
-            objmain.put("shipment", objshipment.toString());           
+            // JSONObject objmain = new JSONObject();
+            // objmain.put("orderId", order.orderId.toString());
+            // objmain.put("status", order.status.toString());
+            // objmain.put("total", order.total);
+            // objmain.put("address", objaddress.toString());
+            // objmain.put("card", objcard.toString());
+            // objmain.put("customer", objcustomer.toString());
+            // objmain.put("date", objdate.toString());
+            // objmain.put("items", arrayitems.toString());
+            // objmain.put("links", objlinks.toString());
+            // objmain.put("payment", objpayment.toString());
+            // objmain.put("shipment", objshipment.toString());           
 
 
             //String _document = objmain.toString();
-            String _document = "{\"date\":{\"date\":\""+objdate.toString()+"\"},\"total\":"+order.total+",\"address\": "+objaddress.toString()+",\"shipment\":"+objshipment.toString()+",\"orderId\":\""+order.orderId.toString()+"\",\"links\":{\"self\":{\"href\":\"http://orders/orders/"+order.orderId.toString()+"\"}},\"payment\":"+objpayment.toString()+",\"items\"::"+arrayitems.toString()+",\"card\":"+objcard.toString()+",\"status\":\""+order.status.toString()+"\",\"customer\":"+objcustomer.toString()+"";
+            String _document = "{\"date\":{\"date\":\""+order.date.toString()+"\"},\"total\":"+order.total+",\"address\": "+objaddress.toString()+",\"shipment\":"+objshipment.toString()+",\"orderId\":\""+order.orderId.toString()+"\",\"links\":{\"self\":{\"href\":\"http://orders/orders/"+order.orderId.toString()+"\"}},\"payment\":"+objpayment.toString()+",\"items\":"+arrayitems.toString()+",\"card\":"+objcard.toString()+",\"status\":\""+order.status.toString()+"\",\"customer\":"+objcustomer.toString()+"}";
             
             System.out.println(_document);
+
     
             // Create a JSON document.
             OracleDocument doc = this.db.createDocumentFromString(_document);
