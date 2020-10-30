@@ -5,7 +5,7 @@
  * http://oss.oracle.com/licenses/upl.
  */
 
-package io.helidon.examples.sockshop.orders.mongo;
+package io.helidon.examples.sockshop.orders.atpsoda;
 
 import javax.annotation.Priority;
 import javax.enterprise.inject.Alternative;
@@ -21,14 +21,16 @@ import static javax.interceptor.Interceptor.Priority.APPLICATION;
 
 @Alternative
 @Priority(APPLICATION + 5)
-public class TestMongoOrderRepository extends MongoOrderRepository implements TestOrderRepository {
-    @Inject
-    public TestMongoOrderRepository(MongoCollection<Order> orders) {
-        super(orders);
-    }
+// public class TestMongoOrderRepository extends MongoOrderRepository implements TestOrderRepository {
+//     @Inject
+//     public TestMongoOrderRepository(MongoCollection<Order> orders) {
+//         super(orders);
+//     }
 
-    @Override
-    public void clear() {
-        orders.deleteMany(new BsonDocument());
-    }
-}
+//     @Override
+//     public void clear() {
+//         orders.deleteMany(new BsonDocument());
+//     }
+// }
+
+public class TestMongoOrderRepository {}

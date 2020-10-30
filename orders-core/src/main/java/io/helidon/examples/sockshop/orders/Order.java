@@ -42,67 +42,67 @@ public class Order implements Serializable, Comparable<Order> {
     @Id
     @JsonbProperty("id")
     @Schema(description = "Order identifier")
-    private String orderId;
+    public String orderId;
 
     /**
      * Customer information.
      */
     @Embedded
     @Schema(description = "Customer information")
-    private Customer customer;
+    public Customer customer;
 
     /**
      * Billing/shipping address.
      */
     @Embedded
     @Schema(description = "Billing/shipping address")
-    private Address address;
+    public Address address;
 
     /**
      * Payment card details.
      */
     @Embedded
     @Schema(description = "Payment card details")
-    private Card card;
+    public Card card;
 
     /**
      * Order date and time.
      */
     @Schema(description = "Order date and time")
-    private LocalDateTime date;
+    public LocalDateTime date;
 
     /**
      * Order total.
      */
     @Schema(description = "Order total")
-    private float total;
+    public float total;
 
     /**
      * Order items.
      */
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     @Schema(description = "Order items")
-    private Collection<Item> items = new ArrayList<>();
+    public Collection<Item> items = new ArrayList<>();
 
     /**
      * Payment authorization.
      */
     @Embedded
     @Schema(description = "Payment authorization")
-    private Payment payment;
+    public Payment payment;
 
     /**
      * Shipment details.
      */
     @Embedded
     @Schema(description = "Shipment details")
-    private Shipment shipment;
+    public Shipment shipment;
 
     /**
      * Order status.
      */
     @Schema(description = "Order status")
-    private Status status;
+    public Status status;
 
     @Builder
     public Order(Customer customer,

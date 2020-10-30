@@ -5,7 +5,7 @@
  * http://oss.oracle.com/licenses/upl.
  */
 
-package io.helidon.examples.sockshop.orders.mongo;
+package io.helidon.examples.sockshop.orders.atpsoda;
 
 import io.helidon.examples.sockshop.orders.OrderResourceIT;
 

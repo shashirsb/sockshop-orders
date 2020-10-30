@@ -18,7 +18,6 @@
 
     <modules>
         <module>orders-core</module>
-        <module>orders-mongo</module>
         <module>orders-atpsoda</module>
     </modules>
 
