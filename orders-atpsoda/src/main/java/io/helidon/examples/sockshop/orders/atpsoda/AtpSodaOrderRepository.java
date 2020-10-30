@@ -148,7 +148,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
                    obj = parser.parse(jsonObject.get("address").toString());
                    JSONObject _address = (JSONObject) obj;
-                   Address address =  Address.builder().number(_address.get("number").toString()).street(_address.get("street").toString()).city(_address.get("city").toString()).postcode(_address.get("postcode").toString()).country(_address.get("country").toString()).build();
+                   orders.address =  Address.builder().number(_address.get("number").toString()).street(_address.get("street").toString()).city(_address.get("city").toString()).postcode(_address.get("postcode").toString()).country(_address.get("country").toString()).build();
 
                    // orders.card = jsonObject.get("card").toString();        // Convert to Card
 
@@ -275,7 +275,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
                    obj = parser.parse(jsonObject.get("address").toString());
                    JSONObject _address = (JSONObject) obj;
-                   Address address =  Address.builder().number(_address.get("number").toString()).street(_address.get("street").toString()).city(_address.get("city").toString()).postcode(_address.get("postcode").toString()).country(_address.get("country").toString()).build();
+                   orders.address =  Address.builder().number(_address.get("number").toString()).street(_address.get("street").toString()).city(_address.get("city").toString()).postcode(_address.get("postcode").toString()).country(_address.get("country").toString()).build();
 
                    // orders.card = jsonObject.get("card").toString();        // Convert to Card
 
