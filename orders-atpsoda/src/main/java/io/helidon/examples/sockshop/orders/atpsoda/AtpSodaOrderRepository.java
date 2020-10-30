@@ -200,7 +200,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
                    JSONObject _shipment = (JSONObject) obj;
 
                    Object dateobj = parser.parse(_shipment.get("deliveryDate").toString());
-                   JSONObject _localdate = (JSONObject) obj;
+                   JSONObject _localdate = (JSONObject) dateobj;
 
                    orders.shipment =   Shipment.builder()
                     .carrier(_shipment.get("carrier").toString())
@@ -357,7 +357,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
                    JSONObject _shipment = (JSONObject) obj;
 
                    Object dateobj = parser.parse(_shipment.get("deliveryDate").toString());
-                   JSONObject _localdate = (JSONObject) obj;
+                   JSONObject _localdate = (JSONObject) dateobj;
 
 
                     orders.shipment =   Shipment.builder()
