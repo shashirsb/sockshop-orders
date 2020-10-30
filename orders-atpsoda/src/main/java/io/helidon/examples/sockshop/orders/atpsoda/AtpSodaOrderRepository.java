@@ -254,10 +254,11 @@ public class AtpSodaOrderRepository implements OrderRepository {
             String jsonFormattedString = null;
             try {
 
-               // OracleDocument filterSpec = this.db.createDocumentFromString("{ \"_id\" : \"" + customerId + "\"}");
+                System.out.println("Customer name isssssss" + customerId);
+               OracleDocument filterSpec = this.db.createDocumentFromString("{ \"username\" : \"" + customerId + "\"}");
 
-               // c = col.find().filter(filterSpec).getCursor();
-                c = col.find().getCursor();
+               c = col.find().filter(filterSpec).getCursor();
+        
 
                 OracleDocument resultDoc;
                 while (c.hasNext()) {
