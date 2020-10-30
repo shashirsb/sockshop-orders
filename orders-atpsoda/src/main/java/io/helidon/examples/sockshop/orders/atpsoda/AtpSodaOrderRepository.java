@@ -159,8 +159,9 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     orders.orderId = jsonObject.get("orderId").toString();
 
                     // String str = "2020-10-29T14:17:02.216+00:00"; 
-                    String strDatewithTime = jsonObject.get("$date").toString();
-                    LocalDateTime aLDT = LocalDateTime.parse(strDatewithTime);
+                    obj = parser.parse(jsonObject.get("date").toString());
+                   JSONObject _date = (JSONObject) obj;                   
+                    LocalDateTime aLDT = LocalDateTime.parse(_date.get("date").toString());
                     orders.date = aLDT;
 
                     orders.total = Float.parseFloat(jsonObject.get("total").toString());
@@ -290,8 +291,9 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     orders.orderId = jsonObject.get("orderId").toString();
 
                     // String str = "2020-10-29T14:17:02.216+00:00"; 
-                    String strDatewithTime = jsonObject.get("$date").toString();
-                    LocalDateTime aLDT = LocalDateTime.parse(strDatewithTime);
+                    obj = parser.parse(jsonObject.get("date").toString());
+                   JSONObject _date = (JSONObject) obj;                   
+                    LocalDateTime aLDT = LocalDateTime.parse(_date.get("date").toString());
                     orders.date = aLDT;
 
                     orders.total = Float.parseFloat(jsonObject.get("total").toString());
