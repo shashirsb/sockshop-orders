@@ -29,7 +29,7 @@ public class Links extends LinkedHashMap<String, Links.Link> implements Serializ
      * @return this {@code Links} structure
      */
     public Links addLink(String entity, String id) {
-        publicLink link = Link.to(ENTITY_MAP.get(entity), id);
+        Link link = Link.to(ENTITY_MAP.get(entity), id);
         put("self", link);
         return this;
     }
