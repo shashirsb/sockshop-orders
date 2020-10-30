@@ -245,9 +245,10 @@ public class AtpSodaOrderRepository implements OrderRepository {
             String jsonFormattedString = null;
             try {
 
-                OracleDocument filterSpec = this.db.createDocumentFromString("{ \"_id\" : \"" + customerId + "\"}");
+               // OracleDocument filterSpec = this.db.createDocumentFromString("{ \"_id\" : \"" + customerId + "\"}");
 
-                c = col.find().filter(filterSpec).getCursor();
+               // c = col.find().filter(filterSpec).getCursor();
+                c = col.find().getCursor();
 
                 OracleDocument resultDoc;
                 while (c.hasNext()) {
@@ -258,7 +259,13 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     Object obj = parser.parse(resultDoc.getContentAsString());
                     JSONObject jsonObject = (JSONObject) obj;
 
-                    
+                    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                    System.out.println(resultDoc.getContentAsString());
+                    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
                     //orders.customer = jsonObject.get("customer").toString(); // Convert to Customer
                     obj = parser.parse(jsonObject.get("customer").toString());
                     JSONObject _customer = (JSONObject) obj;
