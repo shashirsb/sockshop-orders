@@ -197,8 +197,11 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     //orders.shipment = jsonObject.get("shipment").toString(); //Convert to Shipment
                     obj = parser.parse(jsonObject.get("shipment").toString());
                    JSONObject _shipment = (JSONObject) obj;
-                    orders.shipment =   Shipment.builder().carrier(_shipment.get("carrier").toString()).trackingNumber(_shipment.get("trackingNumber").toString()).deliveryDate( LocalDate.parse(_shipment.get("deliveryDate").toString())).build();
-
+                   orders.shipment =   Shipment.builder()
+                    .carrier(_shipment.get("carrier").toString())
+                    .trackingNumber(_shipment.get("trackingNumber").toString())
+                    .deliveryDate( LocalDate.parse(_shipment.get("deliveryDate").toString(), DateTimeFormatter.ofPattern("yyyyd-MM-d")))
+                    .build();
                                    
                     Order.Status status = Order.Status.valueOf(jsonObject.get("status").toString());
                     orders.status =  status;    
@@ -274,19 +277,34 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     System.out.println(_customer.get("firstName").toString());
                     System.out.println(_customer.get("lastName").toString());
                     System.out.println(_customer.get("_id").toString());
-                    orders.customer =  Customer.builder().id(_customer.get("_id").toString()).firstName(_customer.get("firstName").toString()).lastName(_customer.get("lastName").toString()).email(_customer.get("email").toString()).build();
+                    orders.customer =  Customer.builder()
+                    .id(_customer.get("_id").toString())
+                    .firstName(_customer.get("firstName").toString())
+                    .lastName(_customer.get("lastName").toString())
+                    .email(_customer.get("email").toString())
+                    .build();
 
                    // orders.address = jsonObject.get("address").toString();  // Convert to Address 
 
                    obj = parser.parse(jsonObject.get("address").toString());
                    JSONObject _address = (JSONObject) obj;
-                   orders.address =  Address.builder().number(_address.get("number").toString()).street(_address.get("street").toString()).city(_address.get("city").toString()).postcode(_address.get("postcode").toString()).country(_address.get("country").toString()).build();
+                   orders.address =  Address.builder()
+                   .number(_address.get("number").toString())
+                   .street(_address.get("street").toString())
+                   .city(_address.get("city").toString())
+                   .postcode(_address.get("postcode").toString())
+                   .country(_address.get("country").toString())
+                   .build();
 
                    // orders.card = jsonObject.get("card").toString();        // Convert to Card
 
                    obj = parser.parse(jsonObject.get("card").toString());
                    JSONObject _card = (JSONObject) obj;
-                    orders.card =  Card.builder().longNum(_card.get("longNum").toString()).expires(_card.get("expires").toString()).ccv(_card.get("ccv").toString()).build();
+                    orders.card =  Card.builder()
+                    .longNum(_card.get("longNum").toString())
+                    .expires(_card.get("expires").toString())
+                    .ccv(_card.get("ccv").toString())
+                    .build();
 
                     orders.orderId = jsonObject.get("orderId").toString();
 
@@ -324,12 +342,19 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     //orders.payment = jsonObject.get("payment").toString();   // Convert to Payment
                     obj = parser.parse(jsonObject.get("payment").toString());
                    JSONObject _payment = (JSONObject) obj;
-                    orders.payment =   Payment.builder().authorised(Boolean.parseBoolean(_payment.get("authorised").toString())).message(_payment.get("message").toString()).build();
+                    orders.payment =   Payment.builder()
+                    .authorised(Boolean.parseBoolean(_payment.get("authorised").toString()))
+                    .message(_payment.get("message").toString())
+                    .build();
 
                     //orders.shipment = jsonObject.get("shipment").toString(); //Convert to Shipment
                     obj = parser.parse(jsonObject.get("shipment").toString());
                    JSONObject _shipment = (JSONObject) obj;
-                    orders.shipment =   Shipment.builder().carrier(_shipment.get("carrier").toString()).trackingNumber(_shipment.get("trackingNumber").toString()).deliveryDate( LocalDate.parse(_shipment.get("deliveryDate").toString())).build();
+                    orders.shipment =   Shipment.builder()
+                    .carrier(_shipment.get("carrier").toString())
+                    .trackingNumber(_shipment.get("trackingNumber").toString())
+                    .deliveryDate( LocalDate.parse(_shipment.get("deliveryDate").toString(), DateTimeFormatter.ofPattern("yyyyd-MM-d")))
+                    .build();
 
                                    
                     Order.Status status = Order.Status.valueOf(jsonObject.get("status").toString());
