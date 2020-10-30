@@ -250,53 +250,86 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
                 OracleDocument resultDoc;
                 while (c.hasNext()) {
-                    Order order = new Order();
-                    resultDoc = c.next();
 
+                    // String orderId, String carrier, String trackingNumber, LocalDate deliveryDate
+                    resultDoc = c.next();
                     JSONParser parser = new JSONParser();
                     Object obj = parser.parse(resultDoc.getContentAsString());
                     JSONObject jsonObject = (JSONObject) obj;
 
-
-                    //Customer(String id, String firstName, String lastName, String email 
+                    
+                    //orders.customer = jsonObject.get("customer").toString(); // Convert to Customer
                     obj = parser.parse(jsonObject.get("customer").toString());
                     JSONObject _customer = (JSONObject) obj;
-                    order.customer = Customer.builder().id(_customer.get("_id").toString()).firstName(_customer.get("firstName").toString()).lastName(_customer.get("lastName").toString()).email(_customer.get("email").toString()).build();
+                    orders.customer =  Customer.builder().id(_customer.get("id").toString()).firstName(_customer.get("firstName").toString()).lastName(_customer.get("lastName").toString()).email(_customer.get("email").toString()).build();
 
-            
-                  //String number, String street, String city, String postcode, String country
-                    obj = parser.parse(jsonObject.get("address").toString());
-                    JSONObject _address = (JSONObject) obj;
-                    order.address = Adress(_address.get("number").toString(),_address.get("street").toString(),_address.get("city").toString(),_address.get("postcode").toString(),_address.get("country").toString());
-                    //String longNum, String expires, String ccv
-                    obj = parser.parse(jsonObject.get("card").toString());
-                    JSONObject _card = (JSONObject) obj;
-                    order.card = Card(_card.get("longNum").toString(),_card.get("expires").toString(),_card.get("ccv").toString());
+                   // orders.address = jsonObject.get("address").toString();  // Convert to Address 
+
+                   obj = parser.parse(jsonObject.get("address").toString());
+                   JSONObject _address = (JSONObject) obj;
+                   Address address =  Address.builder().number(_address.get("number").toString()).street(_address.get("street").toString()).city(_address.get("city").toString()).postcode(_address.get("postcode").toString()).country(_address.get("country").toString()).build();
+
+                   // orders.card = jsonObject.get("card").toString();        // Convert to Card
+
+                   obj = parser.parse(jsonObject.get("card").toString());
+                   JSONObject _card = (JSONObject) obj;
+                    orders.card =  Card.builder().longNum(_card.get("longNum").toString()).expires(_card.get("expires").toString()).ccv(_card.get("ccv").toString()).build();
+
+                    orders.orderId = jsonObject.get("orderId").toString();
+
+                    // String str = "2020-10-29T14:17:02.216+00:00"; 
+                    String strDatewithTime = jsonObject.get("$date").toString();
+                    LocalDateTime aLDT = LocalDateTime.parse(strDatewithTime);
+                    orders.date = aLDT;
+
+                    orders.total = Float.parseFloat(jsonObject.get("total").toString());
+
+                    //orders.items = jsonObject.get("items").toString();       // Convert to Collection<Item>
+                    JSONArray _itemsArray = (JSONArray)jsonObject.get("items");            
+                    List<Item> items = new ArrayList<>();
+
+                    // Iterator<String> it = _itemsArray.iterator();
+                    // while (it.hasNext()) {
+                    //     System.out.println("City = " + it.next());
+                    // }
                     
-                     //orders.items = jsonObject.get("items").toString();       // Convert to Collection<Item>
-                     JSONArray _itemsArray = jsonObject.getJSONArray("items");            
-                     List<Item> items = new ArrayList<>();
- 
-                     for(Object o: _itemsArray){
-                         if ( o instanceof JSONObject ) {
-                             items.add(new Item(o.itemId.toString(i),Integer.valueOf(o.quantity), Integer.valueOf(o.unitPrice).floatValue()));
-                         }
-                     }
-                     orders.items = items;                
+                    for(Object o: _itemsArray){
+                        if ( o instanceof JSONObject ) {
+                            JSONObject _itemsObject = (JSONObject) o;
+                            items.add(Item.builder()
+                            .itemId(_itemsObject.get("itemId").toString())
+                            .quantity(Integer.parseInt(_itemsObject.get("quantity").toString()))
+                            .unitPrice(Float.parseFloat(_itemsObject.get("unitPrice").toString()))
+                            .build());
+                        }
+                    }
+                    orders.items = items;
 
-                   // String str = "2020-10-29T14:17:02.216+00:00"; 
-                   String strDatewithTime = jsonObject.get("time").toString();
-                   LocalDateTime aLDT = LocalDateTime.parse(strDatewithTime);
+                    
+
+                    //orders.payment = jsonObject.get("payment").toString();   // Convert to Payment
+                    obj = parser.parse(jsonObject.get("payment").toString());
+                   JSONObject _payment = (JSONObject) obj;
+                    orders.payment =   Payment.builder().authorised(Boolean.parseBoolean(_payment.get("authorised").toString())).message(_payment.get("message").toString()).build();
+
+                    //orders.shipment = jsonObject.get("shipment").toString(); //Convert to Shipment
+                    obj = parser.parse(jsonObject.get("shipment").toString());
+                   JSONObject _shipment = (JSONObject) obj;
+                    orders.shipment =   Shipment.builder().carrier(_shipment.get("carrier").toString()).trackingNumber(_shipment.get("trackingNumber").toString()).deliveryDate( LocalDate.parse(_shipment.get("deliveryDate").toString())).build();
+
+                                   
+                    Order.Status status = Order.Status.valueOf(jsonObject.get("status").toString());
+                    orders.status =  status;    
 
 
-                   order.date = aLDT;
-                   order.orderId = jsonObject.get("orderId").toString();
+                   // orders.links = new Links().order(orderId);        // Convert to Link
 
-                   Order.Status status = Order.Status.valueOf(jsonObject.get("status").toString());
-                   orders.status =  status;   
+                                    }
+                                    results.add(orders);
+            } 
 
-                    results.add(order);
-                }
+                    
+                
                 
 
 
