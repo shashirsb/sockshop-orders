@@ -201,7 +201,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
                    orders.shipment =   Shipment.builder()
                     .carrier(_shipment.get("carrier").toString())
                     .trackingNumber(_shipment.get("trackingNumber").toString())
-                    .deliveryDate( LocalDate.parse(_shipment.get("deliveryDate").toString(), DateTimeFormatter.ofPattern("yyyyd-MM-d")))
+                    .deliveryDate( LocalDate.parse(_shipment.get("deliveryDate.deliveryDate").toString(), DateTimeFormatter.ofPattern("yyyy-MM-d")))
                     .build();
                                    
                     Order.Status status = Order.Status.valueOf(jsonObject.get("status").toString());
@@ -354,7 +354,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     orders.shipment =   Shipment.builder()
                     .carrier(_shipment.get("carrier").toString())
                     .trackingNumber(_shipment.get("trackingNumber").toString())
-                    .deliveryDate( LocalDate.parse(_shipment.get("deliveryDate").toString(), DateTimeFormatter.ofPattern("yyyyd-MM-d")))
+                    .deliveryDate( LocalDate.parse(_shipment.get("deliveryDate.deliveryDate").toString(), DateTimeFormatter.ofPattern("yyyy-MM-d")))
                     .build();
 
                                    
