@@ -33,4 +33,4 @@ import static javax.interceptor.Interceptor.Priority.APPLICATION;
 //     }
 // }
 
-public class TestMongoOrderRepository {}
+public class TestAtpSodaOrderRepository {}
