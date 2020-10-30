@@ -356,7 +356,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
             objlinks.put("self", objhref.toString());
 
             JSONObject objpayment = new JSONObject();
-            objpayment.put("authorised", order.payment.authorised.toString());
+            objpayment.put("authorised", order.payment.authorised);
             objpayment.put("message", order.payment.message.toString());
 
             JSONObject objdeliveryDate = new JSONObject();
@@ -372,8 +372,8 @@ public class AtpSodaOrderRepository implements OrderRepository {
                 for (Item item : items) {
                     JSONObject objitems= new JSONObject();
                     objitems.put("itemId", item.itemId.toString());
-                    objitems.put("quantity", item.quantity.toString());
-                    objitems.put("unitPrice", item.unitPrice.toString());
+                    objitems.put("quantity", item.quantity);
+                    objitems.put("unitPrice", item.unitPrice);
                     arrayitems.add(objitems);
                 }
 
@@ -381,7 +381,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
             JSONObject objmain = new JSONObject();
             objmain.put("orderId", order.orderId.toString());
             objmain.put("status", order.status.toString());
-            objmain.put("total", Float.parseFloat(order.total.toString()));
+            objmain.put("total", Float.parseFloat(order.total));
             objmain.put("address", objaddress.toString());
             objmain.put("card", objcard.toString());
             objmain.put("customer", objcustomer.toString());
