@@ -323,12 +323,9 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
 
                    // orders.links = new Links().order(orderId);        // Convert to Link
-
+results.add(orders);
                                     }
-                                    results.add(orders);
-            } 
-
-                    
+            
                 
                 
 
