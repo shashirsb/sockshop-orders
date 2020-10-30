@@ -84,6 +84,7 @@ import org.json.simple.parser.JSONParser;
 
 import org.apache.commons.lang3.StringUtils;
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * An implementation of {@link io.helidon.examples.sockshop.orders.OrderRepository}
@@ -153,7 +154,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
                    obj = parser.parse(jsonObject.get("card").toString());
                    JSONObject _card = (JSONObject) obj;
-                    orders.card =  Card.builder().longNum(_card.get("longNum").toString()).expires(_cardget.get("expires").toString()).ccv(_card.get("ccv").toString()).build();
+                    orders.card =  Card.builder().longNum(_card.get("longNum").toString()).expires(_card.get("expires").toString()).ccv(_card.get("ccv").toString()).build();
 
                     orders.orderId = jsonObject.get("orderId").toString();
 
@@ -190,7 +191,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     Order.Status status = Order.Status.valueOf(jsonObject.get("status").toString());
                     orders.status =  status;    
 
-                    order.links = Links.order(orderId);        // Convert to Link
+                    orders.links = Links.order(orderId);        // Convert to Link
 
                                     }
             } finally {
@@ -308,86 +309,86 @@ public class AtpSodaOrderRepository implements OrderRepository {
         
         try {
 
-            OracleCollection col = this.db.admin().createCollection("orders");
+            // OracleCollection col = this.db.admin().createCollection("orders");
            
 
-            JSONObject objaddress = new JSONObject();
-            objaddress.put("city", order.address.city.toString());
-            objaddress.put("country", order.address.country.toString());
-            objaddress.put("number", order.address.number.toString());
-            objaddress.put("postcode", order.address.postcode.toString());
-            objaddress.put("street", order.address.street.toString());
+            // JSONObject objaddress = new JSONObject();
+            // objaddress.put("city", order.address.city.toString());
+            // objaddress.put("country", order.address.country.toString());
+            // objaddress.put("number", order.address.number.toString());
+            // objaddress.put("postcode", order.address.postcode.toString());
+            // objaddress.put("street", order.address.street.toString());
 
-            JSONObject objcard = new JSONObject();
-            objcard.put("ccv", order.card.ccv.toString());
-            objcard.put("expires", order.card.expires.toString());
-            objcard.put("longNum", order.card.longNum.toString());
+            // JSONObject objcard = new JSONObject();
+            // objcard.put("ccv", order.card.ccv.toString());
+            // objcard.put("expires", order.card.expires.toString());
+            // objcard.put("longNum", order.card.longNum.toString());
 
-            JSONObject objcustomer = new JSONObject();
-            objcustomer.put("_id", order.customer._id.toString());
-            objcustomer.put("email", order.customer.email.toString());
-            objcustomer.put("firstName", order.customer.firstName.toString());
-            objcustomer.put("lastName", order.customer.lastName.toString());
+            // JSONObject objcustomer = new JSONObject();
+            // objcustomer.put("_id", order.customer._id.toString());
+            // objcustomer.put("email", order.customer.email.toString());
+            // objcustomer.put("firstName", order.customer.firstName.toString());
+            // objcustomer.put("lastName", order.customer.lastName.toString());
 
-            JSONObject obj$date = new JSONObject();
-            obj$date.put("$date", order.date.$date.toString());
+            // JSONObject obj$date = new JSONObject();
+            // obj$date.put("$date", order.date.$date.toString());
 
-            JSONObject objdate = new JSONObject();
-            objdate.put("$date", bj$date.toString());
+            // JSONObject objdate = new JSONObject();
+            // objdate.put("$date", bj$date.toString());
 
-            JSONObject objhref = new JSONObject();
-            objhref.put("href", "http://orders/orders/"+ order.orderId.toString());
+            // JSONObject objhref = new JSONObject();
+            // objhref.put("href", "http://orders/orders/"+ order.orderId.toString());
 
-            JSONObject objlinks = new JSONObject();
-            objlinks.put("self", objhref.toString());
+            // JSONObject objlinks = new JSONObject();
+            // objlinks.put("self", objhref.toString());
 
-            JSONObject objpayment = new JSONObject();
-            objpayment.put("authorised", order.payment.authorised);
-            objpayment.put("message", order.payment.message.toString());
+            // JSONObject objpayment = new JSONObject();
+            // objpayment.put("authorised", order.payment.authorised);
+            // objpayment.put("message", order.payment.message.toString());
 
-            JSONObject objdeliveryDate = new JSONObject();
-            objdeliveryDate.put("$date", order.shipment.deliveryDate.date.toString());
+            // JSONObject objdeliveryDate = new JSONObject();
+            // objdeliveryDate.put("$date", order.shipment.deliveryDate.date.toString());
 
-            JSONObject objshipment = new JSONObject();
-            objshipment.put("carrier", order.shipment.carrier.toString());
-            objshipment.put("deliveryDate", objdeliveryDate.toString());
-            objshipment.put("trackingNumber", order.shipment.trackingNumber.toString());
+            // JSONObject objshipment = new JSONObject();
+            // objshipment.put("carrier", order.shipment.carrier.toString());
+            // objshipment.put("deliveryDate", objdeliveryDate.toString());
+            // objshipment.put("trackingNumber", order.shipment.trackingNumber.toString());
 
-            JSONArray arrayitems = new JSONArray();
-            Collection<Item> items = order.shipment.items;
-                for (Item item : items) {
-                    JSONObject objitems= new JSONObject();
-                    objitems.put("itemId", item.itemId.toString());
-                    objitems.put("quantity", item.quantity);
-                    objitems.put("unitPrice", item.unitPrice);
-                    arrayitems.add(objitems);
-                }
+            // JSONArray arrayitems = new JSONArray();
+            // Collection<Item> items = order.shipment.items;
+            //     for (Item item : items) {
+            //         JSONObject objitems= new JSONObject();
+            //         objitems.put("itemId", item.itemId.toString());
+            //         objitems.put("quantity", item.quantity);
+            //         objitems.put("unitPrice", item.unitPrice);
+            //         arrayitems.add(objitems);
+            //     }
 
   
-            JSONObject objmain = new JSONObject();
-            objmain.put("orderId", order.orderId.toString());
-            objmain.put("status", order.status.toString());
-            objmain.put("total", order.total);
-            objmain.put("address", objaddress.toString());
-            objmain.put("card", objcard.toString());
-            objmain.put("customer", objcustomer.toString());
-            objmain.put("date", objdate.toString());
-            objmain.put("items", arrayitems.toString());
-            objmain.put("links", objlinks.toString());
-            objmain.put("payment", objpayment.toString());
-            objmain.put("shipment", objshipment.toString());           
+            // JSONObject objmain = new JSONObject();
+            // objmain.put("orderId", order.orderId.toString());
+            // objmain.put("status", order.status.toString());
+            // objmain.put("total", order.total);
+            // objmain.put("address", objaddress.toString());
+            // objmain.put("card", objcard.toString());
+            // objmain.put("customer", objcustomer.toString());
+            // objmain.put("date", objdate.toString());
+            // objmain.put("items", arrayitems.toString());
+            // objmain.put("links", objlinks.toString());
+            // objmain.put("payment", objpayment.toString());
+            // objmain.put("shipment", objshipment.toString());           
 
 
-            String _document = objmain.toString();
-            System.out.println(_document);
+            // String _document = objmain.toString();
+            // System.out.println(_document);
     
-            // Create a JSON document.
-            OracleDocument doc =
-                this.db.createDocumentFromString(_document);
+            // // Create a JSON document.
+            // OracleDocument doc =
+            //     this.db.createDocumentFromString(_document);
 
-            // Insert the document into a collection.
-            col.insert(doc);
-            System.out.println("saveOrder .... 200OK");
+            // // Insert the document into a collection.
+            // col.insert(doc);
+            // System.out.println("saveOrder .... 200OK");
         } catch (OracleException e) {
             e.printStackTrace();
         } catch (Exception e) {
