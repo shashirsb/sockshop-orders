@@ -177,11 +177,12 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     for(Object o: _itemsArray){
                         if ( o instanceof JSONObject ) {
                             JSONObject _itemsObject = (JSONObject) o;
-                            items.add(Item.builder().itemId(_itemsObject.get("itemId").toString()).quantity(Integer.valueOf(_itemsObject.get("quantity"))).unitPrice(Float.parseFloat(_itemsObject.get("unitPrice"))).build());
+                            items.add(Item.builder().itemId(_itemsObject.get("itemId").toString()).quantity(Integer.parseInt((_itemsObject.get("quantity").toString())).unitPrice(Float.parseFloat(_itemsObject.get("unitPrice").toString())).build());
                         }
                     }
                     orders.items = items;
 
+                    
 
                     //orders.payment = jsonObject.get("payment").toString();   // Convert to Payment
                     obj = parser.parse(jsonObject.get("payment").toString());
