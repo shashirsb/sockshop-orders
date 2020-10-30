@@ -198,10 +198,14 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     //orders.shipment = jsonObject.get("shipment").toString(); //Convert to Shipment
                     obj = parser.parse(jsonObject.get("shipment").toString());
                    JSONObject _shipment = (JSONObject) obj;
+
+                   Object dateobj = parser.parse(_shipment.get("deliveryDate").toString());
+                   JSONObject _localdate = (JSONObject) obj;
+
                    orders.shipment =   Shipment.builder()
                     .carrier(_shipment.get("carrier").toString())
                     .trackingNumber(_shipment.get("trackingNumber").toString())
-                    .deliveryDate( LocalDate.parse(_shipment.get("deliveryDate.deliveryDate").toString(), DateTimeFormatter.ofPattern("yyyy-MM-d")))
+                    .deliveryDate( LocalDate.parse(_localdate.get("deliveryDate").toString(), DateTimeFormatter.ofPattern("yyyy-MM-d")))
                     .build();
                                    
                     Order.Status status = Order.Status.valueOf(jsonObject.get("status").toString());
@@ -351,10 +355,15 @@ public class AtpSodaOrderRepository implements OrderRepository {
                     //orders.shipment = jsonObject.get("shipment").toString(); //Convert to Shipment
                     obj = parser.parse(jsonObject.get("shipment").toString());
                    JSONObject _shipment = (JSONObject) obj;
+
+                   Object dateobj = parser.parse(_shipment.get("deliveryDate").toString());
+                   JSONObject _localdate = (JSONObject) obj;
+
+
                     orders.shipment =   Shipment.builder()
                     .carrier(_shipment.get("carrier").toString())
                     .trackingNumber(_shipment.get("trackingNumber").toString())
-                    .deliveryDate( LocalDate.parse(_shipment.get("deliveryDate.deliveryDate").toString(), DateTimeFormatter.ofPattern("yyyy-MM-d")))
+                    .deliveryDate( LocalDate.parse(_localdate.get("deliveryDate").toString(), DateTimeFormatter.ofPattern("yyyy-MM-d")))
                     .build();
 
                                    
