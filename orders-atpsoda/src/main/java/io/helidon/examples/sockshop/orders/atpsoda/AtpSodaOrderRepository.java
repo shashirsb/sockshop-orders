@@ -489,17 +489,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
 
 
             //String _document = objmain.toString();
-            String _document = "{\"date\":{\"date\":\""+objdate.toString()+"\"},
-            \"total\":"+order.total+",
-            \"address\": "+objaddress.toString()+" ,
-            \"shipment\":"+objshipment.toString()+",
-            \"orderId\":\""+order.orderId.toString()+"\",
-            \"links\":{\"self\":{\"href\":\"http://orders/orders/"+order.orderId.toString()+"\"}},
-            \"payment\":"+objpayment.toString()+",
-            \"items\"::"+arrayitems.toString()+",
-            \"card\":"+objcard.toString()+",
-            \"status\":\""+order.status.toString()+"\",
-            \"customer\":"+objcustomer.toString()+"";
+            String _document = "{\"date\":{\"date\":\""+objdate.toString()+"\"},\"total\":"+order.total+",\"address\": "+objaddress.toString()+",\"shipment\":"+objshipment.toString()+",\"orderId\":\""+order.orderId.toString()+"\",\"links\":{\"self\":{\"href\":\"http://orders/orders/"+order.orderId.toString()+"\"}},\"payment\":"+objpayment.toString()+",\"items\"::"+arrayitems.toString()+",\"card\":"+objcard.toString()+",\"status\":\""+order.status.toString()+"\",\"customer\":"+objcustomer.toString()+"";
             
             System.out.println(_document);
     
