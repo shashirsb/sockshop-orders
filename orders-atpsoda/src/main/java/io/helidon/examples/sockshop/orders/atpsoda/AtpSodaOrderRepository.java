@@ -336,17 +336,19 @@ public class AtpSodaOrderRepository implements OrderRepository {
             objcard.put("expires", order.card.expires.toString());
             objcard.put("longNum", order.card.longNum.toString());
 
+                  
+
             JSONObject objcustomer = new JSONObject();
-            objcustomer.put("_id", order.customer._id.toString());
+            objcustomer.put("_id", order.customer.id.toString());
             objcustomer.put("email", order.customer.email.toString());
             objcustomer.put("firstName", order.customer.firstName.toString());
             objcustomer.put("lastName", order.customer.lastName.toString());
 
             JSONObject obj$date = new JSONObject();
-            obj$date.put("$date", order.date.$date.toString());
+            obj$date.put("$date", order.date.toString());
 
             JSONObject objdate = new JSONObject();
-            objdate.put("$date", bj$date.toString());
+            objdate.put("$date", obj$date.toString());
 
             JSONObject objhref = new JSONObject();
             objhref.put("href", "http://orders/orders/"+ order.orderId.toString());
@@ -359,7 +361,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
             objpayment.put("message", order.payment.message.toString());
 
             JSONObject objdeliveryDate = new JSONObject();
-            objdeliveryDate.put("$date", order.shipment.deliveryDate.date.toString());
+            objdeliveryDate.put("deliveryDate", order.shipment.deliveryDate.toString());
 
             JSONObject objshipment = new JSONObject();
             objshipment.put("carrier", order.shipment.carrier.toString());
@@ -367,7 +369,7 @@ public class AtpSodaOrderRepository implements OrderRepository {
             objshipment.put("trackingNumber", order.shipment.trackingNumber.toString());
 
             JSONArray arrayitems = new JSONArray();
-            Collection<Item> items = order.shipment.items;
+            Collection<Item> items = order.shipment;
                 for (Item item : items) {
                     JSONObject objitems= new JSONObject();
                     objitems.put("itemId", item.itemId.toString());
