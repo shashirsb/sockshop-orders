@@ -29,17 +29,17 @@ public class Shipment implements Serializable {
     /**
      * Shipping carrier.
      */
-    private String carrier;
+    public String carrier;
 
     /**
      * Tracking number.
      */
-    private String trackingNumber;
+    public String trackingNumber;
 
     /**
      * Estimated delivery date.
      */
-    private LocalDate deliveryDate;
+    public LocalDate deliveryDate;
 
     @Builder
     Shipment(String carrier, String trackingNumber, LocalDate deliveryDate) {
