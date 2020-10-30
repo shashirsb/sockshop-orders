@@ -208,7 +208,9 @@ public class AtpSodaOrderRepository implements OrderRepository {
                                         .deliveryDate( LocalDate.parse(_shipment.deliveryDate.toString()))
                                         .build();
 
-                    orders.status =  Order.status(jsonObject.get("status").toString());    
+                                   
+                    Order.Status status = Order.Status.valueOf(jsonObject.get("status"));
+                    orders.status =  status;    
 
                     order.links = Links.order(orderId);        // Convert to Link
 
