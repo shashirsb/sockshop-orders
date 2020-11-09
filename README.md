@@ -6,17 +6,9 @@ The Orders Service is implemented as a multi-module project containing the follo
 domain model, the REST service itself, as well as the data repository abstraction and its 
 in-memory implementation;
 
-2. **[orders-coherence](./orders-coherence)** contains the data repository implementation for 
-Coherence backend
+2. **[orders-atpsoda](./orders-atpsoda)** contains the data repository implementation for 
+Oracle ATP JSON (Soda) backend backend
 
-3. **[orders-mongo](./orders-mongo)** contains the data repository implementation for MongoDB 
-backend
-
-4. **[orders-mysql](./orders-mysql)** contains the data repository implementation for MySQL 
-backend (using JPA)
-
-5. **[orders-redis](./orders-redis)** contains the data repository implementation for Redis 
-backend (using Redisson client)
 
 ## API
 
