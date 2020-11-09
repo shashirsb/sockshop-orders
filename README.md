@@ -28,7 +28,7 @@ change the path to sockshop-orders
 e.g. SOCKSHOP_CATALOG_ATPSODA=$HOME/helidon/final-code/sockshop-orders/orders-atpsoda
 
 $ ./orders-atpsoda/src/main/resources/add_external_jars.sh
-
+```
 ## Building the service
 
 In order to build all the modules and create Docker images for the service, simply run the 
